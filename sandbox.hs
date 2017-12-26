@@ -81,24 +81,33 @@ cycle2 = take 14 (cycle "CHUD ")
 -- repeat will do the same for a single value
 repeat1 = take 10 (repeat 6)
 
+--list comprehensions
+lc1 = [x*2 | x <- [1..10]] -- [2,4,6,8,10,12,14,16,18,20]
+--list comprehensions with predicate
+lc2 = [x*2 | x <- [1..10], x*2 >=12 ] -- [12,14,16,18,20]
+lc3 = [x | x <- [50..100], x `mod` 7 == 3]
 
 -- 'xs' is a variable that is a range, run it with `boomBang [1..15]` or similar
-boomBang xs = [if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]
+boomBang xs = [if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x] --["BOOM!","BOOM!","BOOM!","BOOM!","BOOM!","BANG!","BANG!","BANG!"]
 -- multiple predicates
-notPredicates = [x | x <- [10..20], x/=13, x/=15, x/=19]
+notPredicates = [x | x <- [10..20], x/=13, x/=15, x/=19] --[10,11,12,14,16,17,18,20]
 -- mulitple lists
-multiLists = [x*y | x <- [2,5,10], y <- [8,10,11]]
+multiLists = [x*y | x <- [2,5,10], y <- [8,10,11]] --[16,20,22,40,50,55,80,100,110]
 -- multiple lists with predicate filtering
-mulitPredLists = [x*y | x <- [2,5,10], y <- [8,10,11], x*y > 50]
+mulitPredLists = [x*y | x <- [2,5,10], y <- [8,10,11], x*y > 50] --[55,80,100,110]
 --list comprehension that uses strings
 nouns = ["hobo", "frog", "pope"]
 adjectives = ["lazy", "grouchy", "scheming"]
-phrases = [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns]
+phrases = [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns] --["lazy hobo","lazy frog","lazy pope","grouchy hobo","grouchy frog","grouchypope","scheming hobo","scheming frog","scheming pope"]
+
 -- write a length function
 -- underscore _ serves as a temporoary variable
-length' xs = sum [1 | _ <- xs]
+length' xs = sum [1 | _ <- xs] -- length' [15..30] == 16
 --list comprehension to remove everything except uppercase letters
-removeNonUppercase st = [c | c <- st, c `elem` ['A'..'Z']]
+removeNonUppercase st = [c | c <- st, c `elem` ['A'..'Z']] -- removeNonUppercase "IdontLIKEFROGS" = "ILIKEFROGS"
+
 --remove odd numbers from multiple lists
 xxs = [[1,3,5,2,3,1,2,4,5],[1,2,3,4,5,6,7,8,9],[1,2,4,2,1,6,3,1,3,2,3,6]]
-removeOdds = [ [x | x <- xs, even x] | xs <- xxs]
+removeOdds = [ [x | x <- xs, even x] | xs <- xxs] -- [[2,2,4],[2,4,6,8],[2,4,2,6,2,6]]
+
+
