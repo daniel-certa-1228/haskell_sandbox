@@ -67,6 +67,20 @@ elemTest1 = 10 `elem` [1,2,3,4,5] --False
 elemTest2 = 5 `elem` [1,2,3,4,5] --True
 elemTest3 = 'a' `elem` ['a'..'z'] --True
 
+range1 = [1..30] --[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+range2 = ['a'..'z'] --"abcdefghijklmnopqrstuvwxyz"
+range3 = ['K'..'Z'] --"KLMNOPQRSTUVWXYZ"
+
+--step ranges
+stepRange1 = [2,4..20] --[2,4,6,8,10,12,14,16,18,20]
+stepRange2 = [3,6..20] -- [3,6,9,12,15,18]
+
+-- 'cycle' will cycle a list into an infinite list.  Use 'take' to limit it
+cycle1 = take 10 (cycle[1,2,3])
+cycle2 = take 14 (cycle "CHUD ")
+-- repeat will do the same for a single value
+repeat1 = take 10 (repeat 6)
+
 
 -- 'xs' is a variable that is a range, run it with `boomBang [1..15]` or similar
 boomBang xs = [if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]
