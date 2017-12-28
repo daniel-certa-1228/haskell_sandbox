@@ -110,4 +110,28 @@ removeNonUppercase st = [c | c <- st, c `elem` ['A'..'Z']] -- removeNonUppercase
 xxs = [[1,3,5,2,3,1,2,4,5],[1,2,3,4,5,6,7,8,9],[1,2,4,2,1,6,3,1,3,2,3,6]]
 removeOdds = [ [x | x <- xs, even x] | xs <- xxs] -- [[2,2,4],[2,4,6,8],[2,4,2,6,2,6]]
 
+--Tuples
+--Use tuples when you know in advance how many components some piece of data should have.
+
+--These 2 functions only work in pairs
+tupFirst = fst (8,11) -- 8
+tupFirst2 = fst ("Wow", False) -- "Wow"
+
+tupSecond = snd (8,11) -- 11
+tupSecond2 = snd ("Wow", False) --False
+
+-- 'zip' takes 2 lists and zips them together into one list by joining the matching elements into pairs
+zip1 = zip [1,2,3,4,5] [8,8,8,8,8] --[(1,8),(2,8),(3,8),(4,8),(5,8)]
+zip2 =  zip [1..5] ["one", "two", "three", "four", "five"] --[(1,"one"),(2,"two"),(3,"three"),(4,"four"),(5,"five")]
+
+--lists of different lengths can be zippped
+zipDiff = zip [5,3,2,1,3,4,5,6,7,8,9] ["hello", "there", "dingus"] --[(5,"hello"),(3,"there"),(2,"dingus")]
+
+-- also finite lists can be zipped to infinite lists
+zipInf = zip [1..] ["apple", "orange", "cherry", "mango"]
+
+triangles = [ (a,b,c) | c <- [1..10], b <- [1..10], a <- [1..10]]  --[(1,1,1),(2,1,1),(3,1,1),(4,1,1),(5,1,1),(6,1,1),(7,1,1),(8,1,1),(9,1,1),(10,1,1) ... (1,10,10),(2,10,10),(3,10,10),(4,10,10),(5,10,10),(6,10,10),(7,10,10),(8,10,10),(9,10,10),(10,10,10)]
+
+
+
 
