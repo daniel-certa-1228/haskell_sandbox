@@ -8,24 +8,24 @@ doubleSmallNumber x = if x > 100
     else x*2
 
 -- add 2 lists
-addLists = [1,2,3,4,5] ++ [6,7,8,9,10]
-addStrings = "hello" ++ " " ++ "world"
-addLetters = ['w','o'] ++ ['o','t']
+addLists = [1,2,3,4,5] ++ [6,7,8,9,10] --[1,2,3,4,5,6,7,8,9,10]
+addStrings = "hello" ++ " " ++ "world" --"hello world"
+addLetters = ['w','o'] ++ ['o','t'] --"woot"
 -- cons operator (prepend)
-cat = 'A':" small cat."
-nums = 5:[1,2,3,2,1]
+cat = 'A':" small cat." --"A small cat."
+nums = 5:[1,2,3,2,1] --[5,1,2,3,2,1]
 -- get a value out of a list by index
-value6 = "Dan Certa" !! 6
-value2 = [1,2,3,4,5,6,7,8,9] !! 2
+value6 = "Dan Certa" !! 6 -- 'r'
+value2 = [1,2,3,4,5,6,7,8,9] !! 2 -- 3
 
 --lists can contain lists
 bList = [[1,2,3,4,5],[5,3,3,3,3],[3,2,1,4,5],[12,13,14]]
 -- add to end
-bList2 = bList ++ [[1,1,1,1,1]]
+bList2 = bList ++ [[1,1,1,1,1]] -- [[1,2,3,4,5],[5,3,3,3,3],[3,2,1,4,5],[12,13,14],[1,1,1,1,1]]
 -- prepend
-bList3 = [6,6,6,6]:bList
+bList3 = [6,6,6,6]:bList --[[6,6,6,6],[1,2,3,4,5],[5,3,3,3,3],[3,2,1,4,5],[12,13,14]]
 -- get 3rd list from list of lists
-bList4 = bList !! 2
+bList4 = bList !! 2 --[3,2,1,4,5]
 
 --lists can be compared.  they are compared in lexicographal order
 comp1 = [3,2,1] > [2,1,0]
