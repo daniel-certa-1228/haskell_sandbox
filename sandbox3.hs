@@ -49,3 +49,11 @@ third (_, _, z) = z
 --Pattern matching in list comprehensions
 xs = [(1,3), (4,3), (2,4), (5,3), (5,6), (3,1)]
 summing = [a+b | (a,b) <- xs]
+
+--Pattern match against list
+head' :: [a] -> a
+head' [] = error "Can't call head on an empty list, dipshit."
+head' (x:_) = x
+-- head' [5,4,3,2,1] == 5
+-- head' "Hello" == 'H'
+-- 'h':'e':'l':'l':'o':[] == "hello"
