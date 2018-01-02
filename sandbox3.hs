@@ -25,3 +25,27 @@ charName 'a' = "Albert"
 charName 'b' = "Brohan"
 charName 'c' = "Cecil"
 --there is no generic catchall function, so charname 'f' throws an exception
+
+addVectors_1 :: (Num a) => (a, a) -> (a, a) -> (a, a)
+addVectors_1 a b = (fst a + fst b , snd a + snd b)
+--addVectors_1 (1,2) (3,4) == (4,6)
+
+addVectors_2 :: (Num a) => (a, a) -> (a, a) -> (a, a)
+--PATTERN MATCHING
+addVectors_2 (x1,y1) (x2,y2) = (x1 + x2, y1 + y2)
+--addVectors_1 (1,2) (3,4) == (4,6)
+
+--create our own functions to extract values from triples
+first :: (a, b, c) -> a
+first (x, _, _) = x
+--first (1,2,3) = 1
+second :: (a, b, c) -> b
+second (_, y, _) = y
+-- second (1,2,3)
+third :: (a, b, c) -> c
+third (_, _, z) = z
+--third (1,2,3) == 3
+
+--Pattern matching in list comprehensions
+xs = [(1,3), (4,3), (2,4), (5,3), (5,6), (3,1)]
+summing = [a+b | (a,b) <- xs]
