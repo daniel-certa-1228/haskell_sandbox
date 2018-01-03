@@ -40,3 +40,13 @@ a `myCompare` b
 -- 5 `myCompare` 1 == GT
 -- 5 `myCompare` 5 == EQ
 
+initials :: String -> String -> String
+initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
+    where   (f:_) = firstname
+            (l:_) = lastname
+--initials "Daniel" "Certa" == "D. C."
+
+calcBmis :: (RealFloat a) => [(a,a)] -> [a]
+calcBmis xs = [bmi w h | (w, h) <- xs]
+    where bmi weight height = weight/height^2
+-- calcBmis [(90,2), (80,1.5)] == [22.5,35.55555555555556]
