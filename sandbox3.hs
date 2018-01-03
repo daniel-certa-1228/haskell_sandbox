@@ -57,3 +57,29 @@ head' (x:_) = x
 -- head' [5,4,3,2,1] == 5
 -- head' "Hello" == 'H'
 -- 'h':'e':'l':'l':'o':[] == "hello"
+tell :: (Show a) => [a] -> String
+tell [] = "The list is empty"
+tell (x:[]) = "This list has one element: " ++ show x
+tell (x:y:[]) = "This list has two elements: " ++ show x ++ " and " ++ show y
+tell (x:y:_) = "This list is long.  The first two elements are: " ++ show x ++ " and " ++ show y
+
+length' :: (Num b) => [a] -> b
+length' [] = 0
+length' (_:xs) = 1 + length' xs
+-- (_:xs) breaks the list into the head and tail
+--length' "ham" == 3
+--The pattern dicards the head and adds a 1 to each recursion
+
+sum' :: (Num a) => [a] -> a
+sum' [] = 0
+sum' (x:xs) = x + sum' xs
+-- recursive pattern removes the head from the list and adds it to the sum of the rest of the list
+-- sum [5,4,3,2,1] == 15
+--this equals (5 + (4 + (3 + (2 + (1 + (0))))))
+
+-- 'as patterns' put a name and an @ gives you access to the whole pattern
+capital :: String -> String
+capital "" = "Empty sting. ya dingus."
+capital all@(x:xs) = "The first letter of " ++ all ++ " is " ++ [x]
+--capital "Dan" == "The first letter of Dan is D"
+
