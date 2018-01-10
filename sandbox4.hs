@@ -86,3 +86,19 @@ head2 xs = case xs of [] -> error "No head for empty lists!"
                       (x:_) -> x
 --head2 [2,5,6,8] == 2
 
+describeList :: [a] -> String
+describeList xs = "The list is " ++ case xs of [] -> "empty."
+                                               [x] -> "a singleton list."
+                                               xs -> "a longer list." 
+-- describeList [1,2] == "The list is a longer list."
+-- describeList [12] == "The list is a singleton list."
+-- describeList [] == "The list is empty."
+
+describeList2 :: [a] -> String
+describeList2 xs = "The list is " ++ what xs
+    where what [] = "empty."
+          what [x] = "a singleton list."
+          what xs = "a longer list."
+-- describeList2 [3,4,5] == "The list is a longer list."
+-- describeList2 [65] == "The list is a singleton list."
+-- describeList [] == "The list is empty."
