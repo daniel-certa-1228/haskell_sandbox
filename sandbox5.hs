@@ -48,3 +48,15 @@ reverse' (x:xs) = reverse' xs ++ [x]
 --reverse' [5,4,3,2,1] = [1,2,3,4,5]
 --reverse' [3,2,1] ~ reverse' [2,1] ++ 3 ~ reverse' [1] ++ [2,3] ~ reverse [] ++ [1,2,3] == [1,2,3]
 
+repeat' :: a -> [a]
+repeat' x = x:repeat' x
+-- this gives us an infinite list
+--take' 5 (repeat' 3) == [3,3,3,3,3]
+
+zip' :: [a] -> [b] -> [(a,b)]
+zip' _ [] = []
+zip' [] _ = []
+zip' (x:xs) (y:ys) = (x,y):zip' xs ys
+--zip' [1,2,3,4] [5,6,7,8] == [(1,5),(2,6),(3,7),(4,8)]
+
+-- zip' [1,2] [7,8] = (1,7):zip' [2] [8] = [(1,7), 2,8]
